@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cities/show'
+
   get 'static_pages/home'
 
   root 'static_pages#home'
