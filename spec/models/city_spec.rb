@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe City, type: :model do
 
+
   it "is valid with a name,state and site name" do
     city = City.new(
       name: "Philadelphia",
@@ -36,5 +37,6 @@ RSpec.describe City, type: :model do
     city.valid?
     expect(city.errors[:site_name]).to include("has already been taken")
   end
- 
+
+   
 end
