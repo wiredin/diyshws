@@ -3,7 +3,7 @@
 
 <% @city.shows.each do | show | %>
   <p><%= show.start_date  %></p>
-  <p>@ <%= show.venue  %></p>
+  <p>-<%= show.start_time %> @ <%= show.venue  %></p>
  
 
 <% end %>

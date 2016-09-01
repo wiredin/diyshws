@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
     factory :show do
-      start_date DateTime.current
+      start_datetime DateTime.current
       venue "The Alamo"
     end
 end

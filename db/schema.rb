@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830040006) do
+ActiveRecord::Schema.define(version: 20160831175332) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160830040006) do
   end
 
   create_table "shows", force: :cascade do |t|
-    t.datetime "start_date"
+    t.datetime "start_datetime"
     t.string   "venue"
     t.string   "facebook_event"
     t.datetime "created_at",     null: false
