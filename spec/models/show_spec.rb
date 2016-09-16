@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Show, type: :model do
 
+  it { is_expected.to have_many :bands }
+  it { is_expected.to have_many :performances }  
+
   it "is invalid without a start_datetime" do 
     show = build(:show, start_datetime: nil)
     show.valid?

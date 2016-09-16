@@ -1,0 +1,18 @@
+<%= form_for [:city, @show] do |f| %>
+  <%= f.hidden_field :city_id %>
+  <%= f.label :start_datetime, "Date" %>
+  <%= f.datetime_local_field :start_datetime %><br />
+  <%= f.label :venue %>
+  <%= f.text_field :venue %><br />
+  <%= f.label :facebook_event %>
+  <%= f.text_field :facebook_event %><br />
+    <%= f.fields_for :bands do |b|%>
+      <p>Band <%= b.options[:child_index] + 1 %></p>
+      <%= b.label :Name %>
+      <%= b.text_field :name %><br />
+      <%= b.label :Country %>
+      <%= b.text_field :country %><br />
+    <% end %>  
+  <%= f.submit 'Submit' %>
+<% end %>
+

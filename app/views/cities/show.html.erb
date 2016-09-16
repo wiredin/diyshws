@@ -3,7 +3,12 @@
 
 <% @city.shows.each do | show | %>
   <p><%= show.start_date  %></p>
-  <p>-<%= show.start_time %> @ <%= show.venue  %></p>
+  <p> 
+  <% show.bands.each do |band| %>
+    <a target="_blank" href="https://<%= band.bandcamp %>.bandcamp.com"><%= band.name %></a> -
+  <% end %>
+  <%= show.start_time %> @ <%= show.venue  %>
+  </p>
  
 
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901181325) do
+ActiveRecord::Schema.define(version: 20160902165501) do
 
   create_table "bands", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160901181325) do
     t.text     "tag_line"
     t.integer  "show_id"
     t.index ["show_id"], name: "index_cities_on_show_id"
+  end
+
+  create_table "performances", force: :cascade do |t|
+    t.integer  "band_id"
+    t.integer  "show_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["band_id"], name: "index_performances_on_band_id"
+    t.index ["show_id"], name: "index_performances_on_show_id"
   end
 
   create_table "shows", force: :cascade do |t|
