@@ -5,9 +5,11 @@
   <p><%= show.start_date  %></p>
   <p> 
   <% show.bands.each do |band| %>
-    <a target="_blank" href="https://<%= band.bandcamp %>.bandcamp.com"><%= band.name %></a> -
+    <a target="_blank" href="https://<%= band.bandcamp %>.bandcamp.com"><%= band.name %></a> 
+    <%  unless show.bands.last == band %> // <% end %> 
+      
   <% end %>
-  <%= show.start_time %> @ <%= show.venue  %>
+  -<%= show.start_time %> @ <%= show.venue  %>
   </p>
  
 
