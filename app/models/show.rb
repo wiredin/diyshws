@@ -7,7 +7,7 @@ class Show < ApplicationRecord
 
   validates :start_datetime, presence: true
   validates :venue, presence: true
-
+  validates :bands, presence: true
 
   def start_date 
     self.start_datetime.strftime("%A, %b %d")

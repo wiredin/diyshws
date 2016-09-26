@@ -3,7 +3,10 @@ require 'byebug'
 
 RSpec.describe ShowsController, type: :controller do
 
-  before { @city = create(:city) }
+  before do
+    @city = create(:city)
+    @bands = [attributes_for(:band)]
+  end
   
   describe "GET #new" do
     let(:bands) do
@@ -35,15 +38,18 @@ RSpec.describe ShowsController, type: :controller do
 
       it "saves the new show in the database" do
         expect{
-          post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id) }
+          post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, bands_attributes: @bands ) }
         }.to change(Show, :count).by(1)
       end
 
-      it "redirects to city#show"
+      it "redirects to city#show" do
+        post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, bands_attributes: @bands) }
+        expect(response).to redirect_to city_path(assigns[:show].city)
+      end
 
     end
   
-    context "with valid attributes" do
+    context "with invalid attributes" do
 
       it "does not save the new show in the database"
 
