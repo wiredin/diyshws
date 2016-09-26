@@ -51,10 +51,16 @@ RSpec.describe ShowsController, type: :controller do
   
     context "with invalid attributes" do
 
-      it "does not save the new show in the database"
+      it "does not save the new show in the database" do 
+        expect{
+          post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, venue: nil) }
+        }.to change(Show, :count).by(0)
+      end
 
-      it "re-renders the :new template"
-
+      it "re-renders the :new template" do
+        post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, venue: nil) }
+        expect(response).not_to redirect_to city_path(assigns[:show].city)
+      end
     end
   
     
