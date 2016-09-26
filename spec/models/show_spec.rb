@@ -18,7 +18,7 @@ RSpec.describe Show, type: :model do
   end
 
   it "is valid with a start_time and venue" do
-    expect(build(:show)).to be_valid
+    expect(build(:show_with_bands)).to be_valid
   end
 
   it "returns 'name of day, month and date' for the start_date" do
