@@ -2,14 +2,14 @@
 <p><%= @city.tag_line %></p>
 
 <% @city.shows.each do | show | %>
-  <p><%= show.start_date  %></p>
+  <p><%= show.start_datetime.strftime("%A, %b %d") %></p>
   <p> 
   <% show.bands.each do |band| %>
     <a target="_blank" href="https://<%= band.bandcamp %>.bandcamp.com"><%= band.name %></a> 
     <%  unless show.bands.last == band %> // <% end %> 
       
   <% end %>
-  -<%= show.start_time %> @ <%= show.venue  %>
+  -<%= print_time show.start_datetime  %> @ <%= show.venue  %>
   </p>
  
 

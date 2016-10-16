@@ -1,7 +1,9 @@
 <%= form_for [:city, @show] do |f| %>
   <%= f.hidden_field :city_id %>
-  <%= f.label :start_datetime, "Date" %>
-  <%= f.datetime_local_field :start_datetime %><br />
+  <%= f.label :start_date, "Date" %>
+  <%= f.text_field :start_date, data: { provide: "datepicker" } %><br />
+  <%= f.label :start_time, "Time" %>
+  <%= f.text_field :start_time %><br />
   <%= f.label :venue %>
   <%= f.text_field :venue %><br />
   <%= f.label :facebook_event %>

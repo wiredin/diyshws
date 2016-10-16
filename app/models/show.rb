@@ -10,15 +10,21 @@ class Show < ApplicationRecord
   validates :bands, presence: true
 
   def start_date 
-    self.start_datetime.strftime("%A, %b %d")
+    start_datetime.strftime('%m/%d/%Y') if start_datetime
   end
 
   def start_time
-    if self.start_datetime.strftime("%M") == "00"
-      self.start_datetime.strftime("%l%P")
-    else
-      self.start_datetime.strftime("%l:%M%P")
-    end      
+    start_datetime.strftime('%H:%M') if start_datetime
+  end
+ 
+  def start_time=(t)
+    o = start_datetime.strftime('%m/%d/%Y')  #store original date
+    self.start_datetime = DateTime.strptime(o+t,"%m/%d/%Y%H:%M") 
+  end
+
+  def start_date=(d)
+    o = start_datetime.strftime('%H:%M')  #store original time 
+    self.start_datetime = DateTime.strptime(d+o,"%m/%d/%Y%H:%M") 
   end
 
 end

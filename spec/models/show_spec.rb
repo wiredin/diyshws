@@ -21,28 +21,20 @@ RSpec.describe Show, type: :model do
     expect(build(:show_with_bands)).to be_valid
   end
 
-  it "returns 'name of day, month and date' for the start_date" do
+  it "returns 'mm/dd/yyyy' for start_date" do
     show = build(:show)
-    expect(show.start_date).to eq(show.start_datetime.strftime("%A, %b %d"))
+    expect(show.start_date).to eq(show.start_datetime.strftime("%m/%d/%Y"))
   end
 
-  describe "start_time" do
-    
-       
-    context "is on the exact hour" do
-      it "returns only the hour" do
-        show = build(:show, start_datetime: DateTime.new(2018, 8, 16, 20, 0, 0) )
-        expect(show.start_time).to eq(show.start_datetime.strftime("%l%P")) 
-      end
-    end
+  it "returns 'H:M' for start_date" do
+    show = build(:show)
+    expect(show.start_time).to eq(show.start_datetime.strftime("%H:%M"))
+  end
 
-    context "has minutes" do
-      it "returns hours and minutes" do
-        show = build(:show, start_datetime: DateTime.new(2018, 8, 16, 20, 30, 0) )
-        expect(show.start_time).to eq(show.start_datetime.strftime("%l:%M%P")) 
-      end
-    end
- 
-  end  
-
+  it "returns the expected DateTime when setting start_date and start_time" do
+    show = build(:show)
+    show.start_date = "10/15/2025"
+    show.start_time = "20:30"
+    expect(show.start_datetime).to eq("Wed, 15 Oct 2025 20:30:00 UTC +00:00")
+  end
 end
