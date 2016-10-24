@@ -17,13 +17,13 @@ class Show < ApplicationRecord
     start_datetime.strftime('%H:%M') if start_datetime
   end
  
-  def start_time=(t)
-    o = start_datetime.strftime('%m/%d/%Y')  #store original date
+  def start_time=(t)j
+    o = start_datetime.nil? ? "10/10/2016" : start_datetime.strftime('%m/%d/%Y')  #if its not nil store original date
     self.start_datetime = DateTime.strptime(o+t,"%m/%d/%Y%H:%M") 
   end
 
   def start_date=(d)
-    o = start_datetime.strftime('%H:%M')  #store original time 
+    o = start_datetime.nil? ? "20:00" : start_datetime.strftime('%H:%M')  #if its not nil store original time 
     self.start_datetime = DateTime.strptime(d+o,"%m/%d/%Y%H:%M") 
   end
 

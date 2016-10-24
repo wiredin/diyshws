@@ -1,6 +1,3 @@
-<h1><%= @city.site_name  %></h1>
-<p><%= @city.tag_line %></p>
-
 <% @city.shows.each do | show | %>
   <p><%= show.start_datetime.strftime("%A, %b %d") %></p>
   <p> 

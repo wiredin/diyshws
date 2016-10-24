@@ -2,4 +2,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datepicker3";
+@import "rails_bootstrap_forms";
+
+.container{
+  max-width:700px;
+}
+
+
+
 
