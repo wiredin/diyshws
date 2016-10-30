@@ -3,10 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .start-date{
-width:70%;
-float:left;
-margin-right:5px;
+  width:70%;
+  float:left;
+  margin-right:5px;
 }
 .start-time{
-width:29%;
+  width:29%;
+}
+.band-fields{
+  border:1px dashed #ccc;
+  margin-bottom:20px;
+  padding:8px 80px 8px 20px;
+}
+
+#show-fields{
+  padding:8px 80px 8px 20px;
 }

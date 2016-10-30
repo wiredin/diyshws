@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-datepicker-rails'
 # Use bootstrap_form so that forms are styled automatically
 gem 'bootstrap_form'
+#use country_select to help store location of bands
+gem 'country_select'
+#use vue.js as javascript framework
+gem 'vuejs-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

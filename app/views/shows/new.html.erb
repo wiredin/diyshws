@@ -2,15 +2,22 @@
 <%= bootstrap_form_for [:city, @show] do |f| %>
   <%= render 'shared/error_messages' , model:  @show  %>
   <%= f.hidden_field :city_id %>
-  <div class="form-group">
-    <%= f.text_field_without_bootstrap :start_date, label: "Date", class: "form-control start-date", data: { provide: "datepicker" } %>
-    <%= f.select_without_bootstrap :start_time, time_options, {selected: "19:00"},{class: "form-control start-time" } %>
+  <div id="show-fields">
+    <div class="form-group">
+      <%= f.text_field_without_bootstrap :start_date, label: "Date", class: "form-control start-date", placeholder: 'When', data: { provide: "datepicker" } %>
+      <%= f.select_without_bootstrap :start_time, time_options, {selected: "19:00"},{class: "form-control start-time" } %>
+    </div>
+    <%= f.text_field :venue, placeholder: 'Venue' %>
+    <%= f.text_field :facebook_event, placeholder: 'Facebook event' %>
   </div>
-  <%= f.text_field :venue %>
-  <%= f.text_field :facebook_event %>
   <%= f.fields_for :bands do |b|%>
-    <%= b.text_field :name %>
-    <%= b.text_field :country %>
+    <h4>Band #<%= b.index+1 %></h4>
+    <div class="band-fields">
+      <%= b.text_field :name %>
+      <%= b.label "Location" %>
+      <%= b.country_select :country, {selected: "US"}, {class: "form-control country"} %>
+      <%= b.select_without_bootstrap :state, state_options, {selected: "NJ"}, {class: "form-control state"}%>
+    </div>
   <% end %>  
   <%= f.submit 'Submit' %>
 <% end %>
