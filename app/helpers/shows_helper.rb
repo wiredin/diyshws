@@ -12,6 +12,19 @@ module ShowsHelper
     end
     times
   end
+
+  def country_display(band_fields)
+    if(!band_fields.object.international)
+      "hide"      
+    end 
+  end
+
+  def state_display(band_fields)
+    if(band_fields.object.international)
+      "hide"
+    end 
+  end
+
   def state_options
     states = 
     [

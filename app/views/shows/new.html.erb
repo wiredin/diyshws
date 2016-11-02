@@ -7,16 +7,16 @@
       <%= f.text_field_without_bootstrap :start_date, label: "Date", class: "form-control start-date", placeholder: 'When', data: { provide: "datepicker" } %>
       <%= f.select_without_bootstrap :start_time, time_options, {selected: "19:00"},{class: "form-control start-time" } %>
     </div>
-    <%= f.text_field :venue, placeholder: 'Venue' %>
-    <%= f.text_field :facebook_event, placeholder: 'Facebook event' %>
+    <%= f.text_field :venue, placeholder: 'Venue', hide_label: true %>
+    <%= f.text_field :facebook_event, placeholder: 'Facebook event', hide_label: true %>
   </div>
   <%= f.fields_for :bands do |b|%>
     <h4>Band #<%= b.index+1 %></h4>
     <div class="band-fields">
-      <%= b.text_field :name %>
-      <%= b.label "Location" %>
-      <%= b.country_select :country, {selected: "US"}, {class: "form-control country"} %>
+      <%= b.text_field :name, placeholder: 'name', hide_label: true %>
+      <%= b.country_select :country, {selected: "US"}, {class: "form-control #{country_display b}"} %>
       <%= b.select_without_bootstrap :state, state_options, {selected: "NJ"}, {class: "form-control state"}%>
+      <%= b.check_box :international %>
     </div>
   <% end %>  
   <%= f.submit 'Submit' %>
