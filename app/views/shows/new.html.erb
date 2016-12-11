@@ -1,22 +1,45 @@
 <h4>List a show</h4>
-<%= bootstrap_form_for [:city, @show] do |f| %>
+<%= form_for [:city, @show], html: {class: "form-horizontal"} do |f| %>
   <%= render 'shared/error_messages' , model:  @show  %>
   <%= f.hidden_field :city_id %>
+  
   <div id="show-fields">
     <div class="form-group">
-      <%= f.text_field_without_bootstrap :start_date, label: "Date", class: "form-control start-date", placeholder: 'When', data: { provide: "datepicker" } %>
-      <%= f.select_without_bootstrap :start_time, time_options, {selected: "19:00"},{class: "form-control start-time" } %>
+      <%= f.label :start_date, class: "sr-only" %>
+      <%= f.text_field :start_date, class: "form-control", placeholder: 'When', data: { provide: "datepicker" } %>
     </div>
-    <%= f.text_field :venue, placeholder: 'Venue', hide_label: true %>
-    <%= f.text_field :facebook_event, placeholder: 'Facebook event', hide_label: true %>
+    <div class="form-group">
+      <%= f.label :start_time, class: "sr-only" %>
+      <%= f.select :start_time, time_options, {selected: "19:00"},{class: "form-control start-time"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :venue, class: "sr-only" %>
+      <%= f.text_field :venue, class:"form-control", placeholder: 'Venue' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :facebook_event, class: "sr-only" %>
+      <%= f.text_field :facebook_event, class:"form-control", placeholder: 'Facebook event' %>
+    </div>
   </div>
   <%= f.fields_for :bands do |b|%>
     <h4>Band #<%= b.index+1 %></h4>
     <div class="band-fields">
-      <%= b.text_field :name, placeholder: 'name', hide_label: true %>
-      <%= b.country_select :country, {selected: "US"}, {class: "form-control #{country_display b}"} %>
-      <%= b.select_without_bootstrap :state, state_options, {selected: "NJ"}, {class: "form-control state"}%>
-      <%= b.check_box :international %>
+      <div class="form-group">
+        <%= b.label :name, class: "sr-only" %>
+        <%= b.text_field :name, class: "form-control",  placeholder: 'Name' %>
+      </div>
+      <div class="form-group <%= country_display b %> country-div" >
+        <%= b.label :country, class: "sr-only" %>
+        <%= b.country_select :country, {selected: "US"}, {class: "form-control"} %>
+      </div>
+      <div class="form-group state-div">
+        <%= b.label :state, class: "sr-only" %>
+        <%= b.select :state, state_options, {selected: "NJ"}, {class: "form-control state"}%>
+      </div>
+      <div class="form-group">
+        <%= b.label :international %>
+        <%= b.check_box :international %>
+      </div>
     </div>
   <% end %>  
   <%= f.submit 'Submit' %>
