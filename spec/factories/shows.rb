@@ -1,7 +1,8 @@
 FactoryGirl.define do
 
   factory :show do
-    start_datetime DateTime.current + 100
+    start_date (DateTime.current + 100).strftime('%m/%d/%Y') 
+    start_time DateTime.current.strftime('%H:%M')
     venue "The Alamo"
     city
 

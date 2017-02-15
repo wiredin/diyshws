@@ -5,7 +5,7 @@ RSpec.describe ShowsController, type: :controller do
 
   before do
     @city = create(:city)
-    @bands = [attributes_for(:band)]
+    @bands = [attributes_for(:band),attributes_for(:band),attributes_for(:band)]
   end
   
   describe "GET #new" do

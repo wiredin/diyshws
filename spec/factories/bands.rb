@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :band do
-    name "Eternal Fuzz"
-    state "NJ"
-    country "USA"
-    bandcamp "eternalfuzz"
+  factory :band do |b|
+    b.sequence(:name) {|n| "Eternal Fuzz#{n}"}
+    b.state "NJ"
+    b.country "USA"
+    b.sequence(:bandcamp) {|n| "eternalfuzz#{n}"}
   end
 end
