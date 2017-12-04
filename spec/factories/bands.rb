@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :band do |b|
     b.sequence(:name) {|n| "Eternal Fuzz#{n}"}
     b.state "NJ"

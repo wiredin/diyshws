@@ -11,7 +11,7 @@ RSpec.describe "Shows", type: :request do
   describe "POST /cities/1/shows" do
     it "saves the new show in the database" do
       expect{
-        post '/cities/1/shows', { show: attributes_for(:show, city_id: @city.id, venue: "The Alamo", start_date: "12/22/2016", start_time: "1:00", bands_attributes: @bands ) }
+        post '/cities/1/shows', params: { show: attributes_for(:show, city_id: @city.id, venue: "The Alamo", start_date: "12/22/2016", start_time: "1:00", bands_attributes: @bands ) }
       }.to change(Show, :count).by(1)
     end
   end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :performance do
     band nil
     show nil

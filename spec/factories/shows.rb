@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :show do
     start_date (DateTime.current + 100).strftime('%m/%d/%Y') 
