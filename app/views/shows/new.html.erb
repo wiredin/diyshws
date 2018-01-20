@@ -1,3 +1,6 @@
+<%= javascript_pack_tag 'application' %>
+<%= stylesheet_pack_tag 'application' %>
+
 <h4>List a show</h4>
 <%= form_for [:city, @show], html: {class: "form-horizontal"} do |f| %>
   <%= render 'shared/error_messages' , model:  @show  %>
@@ -21,28 +24,11 @@
       <%= f.text_field :facebook_event, class:"form-control", placeholder: 'Facebook event' %>
     </div>
   </div>
-  <%= f.fields_for :bands do |b|%>
-    <h4>Band #<%= b.index+1 %></h4>
-    <div class="band-fields">
-      <div class="form-group">
-        <%= b.label :name, class: "sr-only" %>
-        <%= b.text_field :name, class: "form-control",  placeholder: 'Name' %>
-      </div>
-      <div class="form-group <%= country_display b %> country-div" >
-        <%= b.label :country, class: "sr-only" %>
-        <%= b.country_select :country, {selected: "US"}, {class: "form-control"} %>
-      </div>
-      <div class="form-group state-div">
-        <%= b.label :state, class: "sr-only" %>
-        <%= b.select :state, state_options, {selected: "NJ"}, {class: "form-control state"}%>
-      </div>
-      <div class="form-group international">
-        <%= b.check_box :international %>
-        <%= b.label :international? %>
-      </div>
-    </div>
-  <% end %>  
-  <div class="form-group">
+  <h4>Add Bands</h4>
+  <div id="show-fields">
+    <%= react_component("BandsForm") %>
+  </div>
+ <div class="form-group">
     <%= f.submit 'Submit', class: "btn btn-primary" %>
   </div>
 <% end %>

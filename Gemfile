@@ -30,8 +30,10 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap_form'
 #use country_select to help store location of bands
 gem 'country_select'
-#use vue.js as javascript framework
-gem 'vuejs-rails'
+#use webpacker to handle modern JS tooling
+gem 'webpacker' 
+#use react rails to integrate react componenets into views
+gem 'react-rails', '2.3.1' 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -1,0 +1,79 @@
+
+.band-content{
+  font-size:13px;
+  position:relative;
+  top:-78px;
+  left:40px;
+  width:80%;
+}
+
+.band-name{
+  font-size:16px;
+  font-weight:500;
+}
+
+.Band{
+  margin: 4px 0 15px 0;
+  border: dashed 1px #ccc;
+  height:85px;
+  padding: 2px 6px;
+  background-color:white;
+}
+
+.drag-handle-container{
+  position: relative;
+  top: 0px;
+  left: 3px;
+  width: 22px;
+  height: 100%;
+}
+
+.drag-handle{
+  position:relative;
+  top:30px;
+  width: 22px;
+  height: 14px;
+  background: linear-gradient(180deg,#6a6a6a,#6a6a6a 20%,#fff 0,#fff 40%,#6a6a6a 0,#6a6a6a 60%,#fff 0,#fff 80%,#6a6a6a 0,#6a6a6a);
+}
+
+.virtBand{
+  color:red;
+}
+
+.Band UL {
+  list-style-type:none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.Bands .input-group-addon {
+  padding: 6px 6px 6px 12px;
+}
+
+
+.has-error .Select-control{
+  border-color: #a94442;
+}
+
+
+.has-error .form-control{
+  border-color: #a94442;
+}
+
+.has-error .form-control:focus{
+  box-shadow: 0 0 0 .2rem rgba(220,53,69,.25);
+}
+
+.input-error{
+  color: #a94442;
+
+}
+
+.Remove{
+  float:right;
+  color: #333;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

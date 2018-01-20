@@ -18,6 +18,10 @@
 !/tmp/.keep
 *.swp
 *.swo
+yarn-error.log*
 
 # Ignore Byebug command history file.
 .byebug_history
+/public/packs
+/public/packs-test
+/node_modules
