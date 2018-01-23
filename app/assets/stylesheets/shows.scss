@@ -2,23 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.start-date{
-  width:70%;
-  float:left;
-  margin-right:5px;
-}
-.start-time{
-  max-width:200px;
-}
-.band-fields{
-  border:1px dashed #ccc;
-  margin-bottom:20px;
-  padding:8px 80px 8px 80px;
+.start-date {
+  width: 70%;
+  float: left;
+  margin-right: 5px;
 }
 
-#show-fields{
-  padding:8px 80px 8px 80px;
+.start-time {
+  max-width: 200px;
 }
-.international{
-  margin-bottom:0px;
+
+.band-fields {
+  border: 1px dashed #ccc;
+  margin-bottom: 20px;
+  padding: 8px 80px 8px 80px;
+}
+
+#show-fields {
+  padding: 8px 80px 8px 80px;
+}
+
+.international {
+  margin-bottom: 0px;
+}
+
+.react-modal-dialog {
+  width: 600px;
+  margin: 30px auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border-radius: 6px;
+  outline: 0;
+}
+
+.react-modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
 }

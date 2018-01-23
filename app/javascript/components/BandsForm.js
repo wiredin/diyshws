@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
 import BandLocationSelect from './bandLocationSelect.js';
+import ReactModal from 'react-modal';
 import 'react-select/dist/react-select.css';
 import '../src/Bands.css';
 
@@ -130,13 +131,16 @@ class BandsForm extends Component {
       state: '',
       bandcamp: '',
       soundcloud: '',
-      data: [{name: 'Pile', state: 'NJ', bandcamp: 'pile', soundcloud: 'explodinginsoundrecords/pile-texas'}],
+      showModal: false,
+      data: [{name: 'Glazer', state: 'NJ', bandcamp: 'Glazer', soundcloud: 'explodinginsoundrecords/pile-texas'}],
       errors: {name: false, state: false, bandcamp: false, soundcloud: false}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleLocation = this.handleLocation.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   handleChange(event){
@@ -199,6 +203,7 @@ class BandsForm extends Component {
       });
       this.setState({data: data});
       this.clearInput();
+      this.handleCloseModal();
     }
     event.preventDefault();
   }
@@ -219,42 +224,62 @@ class BandsForm extends Component {
     data.splice(key,1);
     this.setState({data: data});
   }
+
+  handleOpenModal(){
+    this.setState({showModal: true});
+  }
+
+  handleCloseModal() {
+    this.setState({showModal: false});
+  }
  
   handleLocation(loc) {
-      
-      this.setState({state: loc});
+    this.setState({state: loc});
   }
 
     render() {
     return (
       <div className="Bands">
           <BandList bands={this.state.data} onSortEnd={this.onSortEnd} onRemove={this.handleRemove} useDragHandle={true}/>
-          <div className={validationClasses(this.state.errors["name"])}>
-            <label htmlFor="name" className="control sr-only sr-only"> Band Name:</label>
-            <input type="text" className="form-control" placeholder="Band Name" id="name" value={this.state.name} onChange={this.handleChange} />
-            <small className="input-error">{(this.state.errors["name"]) ? "Name cannot be blank" : ''}</small>
+          <a className="btn" onClick={this.handleOpenModal}>Add Band</a>
+          <ReactModal
+            isOpen={this.state.showModal}
+            className="react-modal-dialog" 
+            overlayClassName="react-modal-overlay"
+            onRequestClose={this.handleCloseModal}
+            shouldCloseOnOverlayClick={true}
+          >
+            <div className="modal-header"><h4 className="modal-title">Add Band</h4></div>
+          <div className="modal-body"> 
+            <div className={validationClasses(this.state.errors["name"])}>
+              <label htmlFor="name" className="control sr-only sr-only"> Band Name:</label>
+              <input type="text" className="form-control" placeholder="Band Name" id="name" value={this.state.name} onChange={this.handleChange} />
+              <small className="input-error">{(this.state.errors["name"]) ? "Name cannot be blank" : ''}</small>
+            </div>
+            <div className={validationClasses(this.state.errors["state"])}>
+              <label htmlFor="state" className="control sr-only">State:</label>
+              <BandLocationSelect
+                value={this.state.state}
+                onLocationChange={this.handleLocation}
+              />
+              <small className="input-error">{(this.state.errors["state"]) ? "State/Country cannot be blank" : ''}</small>
+            </div>
+            <div className={validationClasses(this.state.errors["bandcamp"])}>
+              <label htmlFor="bandcamp" className="control sr-only"> Bandcamp:</label>
+              <input type="text" className="form-control" placeholder="Bandcamp (optional)" id="bandcamp" value={this.state.bandcamp} onChange={this.handleChange} />
+              <small className="input-error">{(this.state.errors["bandcamp"]) ? "Not a valid bandcamp link" : ''}</small>
+            </div>
+            <div className={validationClasses(this.state.errors["soundcloud"])}>
+              <label htmlFor="soundcloud" className="control sr-only"> Soundcloud:</label>
+              <input type="text" className="form-control" placeholder="Soundcloud (optional)" id="soundcloud" value={this.state.soundcloud} onChange={this.handleChange} />
+              <small className="input-error">{(this.state.errors["soundcloud"]) ? "Not a valid soundcloud link" : ''}</small>
+            </div>
           </div>
-          <div className={validationClasses(this.state.errors["state"])}>
-            <label htmlFor="state" className="control sr-only">State:</label>
-            <BandLocationSelect
-              value={this.state.state}
-              onLocationChange={this.handleLocation}
-            />
-            <small className="input-error">{(this.state.errors["state"]) ? "State/Country cannot be blank" : ''}</small>
+          <div className="modal-footer">
+            <button className="btn btn-default" onClick={this.handleCloseModal}>Close</button>
+            <button className="btn btn-primary" onClick={this.handleSubmit}>Add </button>
           </div>
-          <div className={validationClasses(this.state.errors["bandcamp"])}>
-            <label htmlFor="bandcamp" className="control sr-only"> Bandcamp:</label>
-            <input type="text" className="form-control" placeholder="Bandcamp (optional)" id="bandcamp" value={this.state.bandcamp} onChange={this.handleChange} />
-            <small className="input-error">{(this.state.errors["bandcamp"]) ? "Not a valid bandcamp link" : ''}</small>
-          </div>
-          <div className={validationClasses(this.state.errors["soundcloud"])}>
-            <label htmlFor="soundcloud" className="control sr-only"> Soundcloud:</label>
-            <input type="text" className="form-control" placeholder="Soundcloud (optional)" id="soundcloud" value={this.state.soundcloud} onChange={this.handleChange} />
-            <small className="input-error">{(this.state.errors["soundcloud"]) ? "Not a valid soundcloud link" : ''}</small>
-          </div>
-          <div className="form-group">
-            <input className="btn btn-default" onClick={this.handleSubmit}  type="submit" value="Add" />
-          </div>
+        </ReactModal>
       </div>
     );
   }
