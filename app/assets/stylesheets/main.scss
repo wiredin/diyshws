@@ -1,8 +1,4 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "bootstrap-datepicker3";
-@import "rails_bootstrap_forms";
+// Custom bootstrap variables must be set or imported *before* bootstrap.
 
 .container{
   max-width:700px;

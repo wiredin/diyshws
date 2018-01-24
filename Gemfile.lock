@@ -41,19 +41,11 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (7.2.0)
-      execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bindex (0.5.0)
-    bootstrap-datepicker-rails (1.7.1.1)
-      railties (>= 3.0)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
-    bootstrap_form (2.7.0)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.16.1)
@@ -245,9 +237,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-datepicker-rails
-  bootstrap-sass (~> 3.3.6)
-  bootstrap_form
   byebug
   capybara
   coffee-rails (~> 4.2)
@@ -274,4 +263,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.16.0
+   1.16.1

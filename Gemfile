@@ -9,8 +9,6 @@ gem 'sqlite3'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Use Bootstrap as the front end framework
-gem 'bootstrap-sass', '~> 3.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -24,10 +22,10 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# bootstrap-datepicker-rails project integrates a datepicker 
-gem 'bootstrap-datepicker-rails'
-# Use bootstrap_form so that forms are styled automatically
-gem 'bootstrap_form'
+#bootstrap form
+#gem "bootstrap_form",
+#  git: "https://github.com/bootstrap-ruby/rails-bootstrap-forms.git",
+#  branch: "master"
 #use country_select to help store location of bands
 gem 'country_select'
 #use webpacker to handle modern JS tooling
