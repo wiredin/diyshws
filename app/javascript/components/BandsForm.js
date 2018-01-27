@@ -12,10 +12,9 @@ const DragHandle = SortableHandle(() => <div className="drag-handle-container"><
 const Header = ({number}) => {
   let title = null;
   if (number===0) {
-    title = <h4> Headliner </h4>;
-  }else{
-    title = <h4>Band #{number+1}</h4>;
+    title = <h6> Headliner </h6>;
   }
+  
   return(
       <div className="Header">{title}</div>
   );
@@ -77,9 +76,12 @@ const Band = SortableElement(({band, onRemove, value}) => {
 
 
 const BandList = SortableContainer(({bands, onRemove}) => {
-  const bandListNode =  bands.map((band, i) => {
+  let bandListNode =  bands.map((band, i) => {
     return ([<Header key={`header-${i}`} number={i} />, <Band index={i} key={`band-${i}`} value={i} band={band} onRemove={onRemove}/>, <HiddenInput key={`input-${i}`} number={i} band={band} />])
   });
+  if (bands.length==0){
+    bandListNode = <p>No bands yet</p>;
+  }
   return (<div className="BandList">{bandListNode}</div>);
 });
 
@@ -241,7 +243,7 @@ class BandsForm extends Component {
     return (
       <div className="Bands">
           <BandList bands={this.state.data} onSortEnd={this.onSortEnd} onRemove={this.handleRemove} useDragHandle={true}/>
-          <a className="btn" onClick={this.handleOpenModal}>Add Band</a>
+          <button type="button" className="btn btn-link" onClick={this.handleOpenModal}>Add Band</button>
           <ReactModal
             isOpen={this.state.showModal}
             className="react-modal-dialog" 
@@ -250,7 +252,7 @@ class BandsForm extends Component {
             shouldCloseOnOverlayClick={true}
           >
             <div className="modal-header"><h4 className="modal-title">Add Band</h4></div>
-          <div className="modal-body"> 
+            <div className="modal-body"> 
             <div className={validationClasses(this.state.errors["name"])}>
               <label htmlFor="name" className="control sr-only sr-only"> Band Name:</label>
               <input type="text" className="form-control" placeholder="Band Name" id="name" value={this.state.name} onChange={this.handleChange} />

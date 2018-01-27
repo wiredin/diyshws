@@ -1,3 +1,7 @@
+$('#datepicker').datepicker({
+  autoclose: true
+});
+
 var internationals = $( "input[name$='international]'][type='checkbox']" );
 $( "input[name$='international]'][type='checkbox']" ).click(function(){
  

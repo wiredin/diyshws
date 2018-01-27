@@ -1,7 +1,7 @@
 <%= javascript_pack_tag 'application' %>
 <%= stylesheet_pack_tag 'application' %>
 
-<h4>List a show</h4>
+<h4 class="mb-3">List a show</h4>
 <%= form_for [:city, @show], html: {class: "form-horizontal"} do |f| %>
   <%= render 'shared/error_messages' , model:  @show  %>
   <%= f.hidden_field :city_id %>
@@ -9,7 +9,7 @@
   <div id="show-fields">
     <div class="form-group">
       <%= f.label :start_date, class: "sr-only" %>
-      <%= f.text_field :start_date, class: "form-control", placeholder: 'When', data: { provide: "datepicker" } %>
+      <%= f.text_field :start_date, class: "form-control", placeholder: 'When', id: "datepicker" %>
     </div>
     <div class="form-group">
       <%= f.label :start_time, class: "sr-only" %>
@@ -24,11 +24,12 @@
       <%= f.text_field :facebook_event, class:"form-control", placeholder: 'Facebook event' %>
     </div>
   </div>
-  <h4>Bands</h4>
+  <hr class="mb-4">
   <div id="show-fields">
     <%= react_component("BandsForm") %>
   </div>
- <div class="form-group">
+  <hr class="mb-4">
+  <div class="form-group">
     <%= f.submit 'Submit', class: "btn btn-primary" %>
   </div>
 <% end %>
