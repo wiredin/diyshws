@@ -7,7 +7,7 @@ import '../src/Bands.css';
 
 const LOCATIONS = require('./data/locations');
 
-const DragHandle = SortableHandle(() => <div className="drag-handle-container"><div className="drag-handle"></div></div>);
+const DragHandle = SortableHandle(() => <div className="drag-handle align-self-center"></div>);
 
 const Header = ({number}) => {
   let title = null;
@@ -61,15 +61,20 @@ const Soundcloud = ({soundcloud}) => {
 
 const Band = SortableElement(({band, onRemove, value}) => {
   return (
-      <div className="Band">
-        <div><button className="Remove" onClick={() => onRemove(value)}>x</button></div>
-        <DragHandle />
-        <ul className="band-content">
-          <li className="band-name">{band.name}</li>
-          <li>{locationName(band.state)}</li>
-          <Bandcamp bandcamp={band.bandcamp}/>
-          <Soundcloud soundcloud={band.soundcloud}/>
-        </ul>
+      <div className="list-group-item">
+          <div className="d-flex">
+            <DragHandle />
+            <div className="ml-2">
+              <h5 className="mb-1">{band.name}</h5>
+              <p className="mb-1">{locationName(band.state)}</p>
+              <ul className="band-ul">
+                <Bandcamp bandcamp={band.bandcamp}/>
+                <Soundcloud soundcloud={band.soundcloud}/>
+              </ul>
+            </div>
+            <span className="ml-auto mb-auto badge badge-info">Headliner</span>
+            <button className="ml-3 mb-auto Remove" onClick={() => onRemove(value)}>x</button>
+          </div>
       </div>
   );
 });
@@ -77,12 +82,12 @@ const Band = SortableElement(({band, onRemove, value}) => {
 
 const BandList = SortableContainer(({bands, onRemove}) => {
   let bandListNode =  bands.map((band, i) => {
-    return ([<Header key={`header-${i}`} number={i} />, <Band index={i} key={`band-${i}`} value={i} band={band} onRemove={onRemove}/>, <HiddenInput key={`input-${i}`} number={i} band={band} />])
+    return ([<Band index={i} key={`band-${i}`} value={i} band={band} onRemove={onRemove}/>, <HiddenInput key={`input-${i}`} number={i} band={band} />])
   });
   if (bands.length==0){
     bandListNode = <p>No bands yet</p>;
   }
-  return (<div className="BandList">{bandListNode}</div>);
+  return (<div className="list-group">{bandListNode}</div>);
 });
 
 function validationClasses(error){
@@ -243,7 +248,7 @@ class BandsForm extends Component {
     return (
       <div className="Bands">
           <BandList bands={this.state.data} onSortEnd={this.onSortEnd} onRemove={this.handleRemove} useDragHandle={true}/>
-          <button type="button" className="btn btn-link" onClick={this.handleOpenModal}>Add Band</button>
+          <button type="button" className="btn btn-link pl-0 pt-2" onClick={this.handleOpenModal}>Add Band</button>
           <ReactModal
             isOpen={this.state.showModal}
             className="react-modal-dialog" 
@@ -279,7 +284,7 @@ class BandsForm extends Component {
           </div>
           <div className="modal-footer">
             <button className="btn btn-default" onClick={this.handleCloseModal}>Close</button>
-            <button className="btn btn-primary" onClick={this.handleSubmit}>Add </button>
+            <button className="btn btn-primary" onClick={this.handleSubmit}>Add</button>
           </div>
         </ReactModal>
       </div>

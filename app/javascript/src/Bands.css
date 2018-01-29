@@ -21,16 +21,11 @@
 }
 
 .drag-handle-container{
-  position: relative;
-  top: 0px;
-  left: 3px;
-  width: 22px;
-  height: 100%;
+  margin-right:7px;
 }
 
 .drag-handle{
-  position:relative;
-  top:30px;
+  margin-right:7px;
   width: 22px;
   height: 14px;
   background: linear-gradient(180deg,#6a6a6a,#6a6a6a 20%,#fff 0,#fff 40%,#6a6a6a 0,#6a6a6a 60%,#fff 0,#fff 80%,#6a6a6a 0,#6a6a6a);
@@ -40,10 +35,11 @@
   color:red;
 }
 
-.Band UL {
+.band-ul {
   list-style-type:none;
   padding: 0;
   margin: 0;
+  font-size:.80rem;
 
 }
 
@@ -71,6 +67,9 @@
 }
 
 .Remove{
+  position:relative;
+  top:-7px;
+  left:4px;
   float:right;
   color: #333;
   background: none;
