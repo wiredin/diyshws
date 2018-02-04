@@ -1,78 +1,66 @@
-
-.band-content{
-  font-size:13px;
-  position:relative;
-  top:-78px;
-  left:40px;
-  width:80%;
+.band-item-content {
+  margin-left: 20px;
 }
 
-.band-name{
-  font-size:16px;
-  font-weight:500;
+.list-group-item {
+  display: flex;
+  align-items: center;
 }
 
-.Band{
-  margin: 4px 0 15px 0;
-  border: dashed 1px #ccc;
-  height:85px;
-  padding: 2px 6px;
-  background-color:white;
-}
-
-.drag-handle-container{
-  margin-right:7px;
-}
-
-.drag-handle{
-  margin-right:7px;
+.drag-handle {
+  float: left;
   width: 22px;
-  height: 14px;
-  background: linear-gradient(180deg,#6a6a6a,#6a6a6a 20%,#fff 0,#fff 40%,#6a6a6a 0,#6a6a6a 60%,#fff 0,#fff 80%,#6a6a6a 0,#6a6a6a);
-}
-
-.virtBand{
-  color:red;
+  height: 19px;
+  background: linear-gradient(
+    180deg,
+    #6a6a6a,
+    #6a6a6a 20%,
+    #fff 0,
+    #fff 40%,
+    #6a6a6a 0,
+    #6a6a6a 60%,
+    #fff 0,
+    #fff 80%,
+    #6a6a6a 0,
+    #6a6a6a
+  );
 }
 
 .band-ul {
-  list-style-type:none;
+  list-style-type: none;
   padding: 0;
   margin: 0;
-  font-size:.80rem;
-
+  font-size: 0.8rem;
 }
 
-.Bands .input-group-addon {
-  padding: 6px 6px 6px 12px;
+.band-location{
+  font-size: 0.8rem;
 }
 
-
-.has-error .Select-control{
+.has-error .Select-control {
   border-color: #a94442;
 }
 
-
-.has-error .form-control{
+.has-error .form-control {
   border-color: #a94442;
 }
 
-.has-error .form-control:focus{
-  box-shadow: 0 0 0 .2rem rgba(220,53,69,.25);
+.has-error .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-.input-error{
+.input-error {
   color: #a94442;
-
 }
 
-.Remove{
-  position:relative;
-  top:-7px;
-  left:4px;
-  float:right;
-  color: #333;
-  background: none;
-  border: none;
+.band-item-action {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+
+.band-item-action .close {
+  font-size: 1rem;
+  float:none;
   cursor: pointer;
 }
