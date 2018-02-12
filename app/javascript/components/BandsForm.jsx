@@ -118,7 +118,7 @@ const Band = SortableElement(({band, onRemove, value}) => {
         <BandName name={band.name} number={value} />
         <div className="band-item-action">
           <Header number={value} />
-          <button className="ml-2 close" onClick={() => onRemove(value)}>
+          <button type="button" className="ml-2 close" onClick={() => onRemove(value)}>
             x
           </button>
         </div>
