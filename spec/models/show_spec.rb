@@ -11,6 +11,18 @@ RSpec.describe Show, type: :model do
     expect(show.errors[:start_datetime]).to include("can't be blank")
   end
 
+  it "is invalid without a start_datetime" do 
+    show = build(:show, start_datetime: nil)
+    show.valid?
+    expect(show.errors[:start_datetime]).to include("can't be blank")
+  end
+  
+  it "is invalid without bands" do 
+    show = build(:show, bands: [])
+    show.valid?
+    expect(show.errors[:bands]).to include("can't be blank")
+  end
+
   it "is invalid without a start_date" do
     show = build(:show, start_date: nil)
     show.valid?
