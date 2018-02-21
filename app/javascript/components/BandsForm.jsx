@@ -200,14 +200,7 @@ class BandsForm extends Component {
       bandcamp: '',
       soundcloud: '',
       showModal: false,
-      data: [
-        {
-          name: 'Glazer',
-          state: 'NJ',
-          bandcamp: 'Glazer',
-          soundcloud: 'explodinginsoundrecords/pile-texas',
-        },
-      ],
+      data: [],
       errors: {name: false, state: false, bandcamp: false, soundcloud: false},
     };
     this.handleChange = this.handleChange.bind(this);
