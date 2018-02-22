@@ -32,7 +32,7 @@ gem 'country_select'
 #use webpacker to handle modern JS tooling
 gem 'webpacker' 
 #use react rails to integrate react componenets into views
-gem 'react-rails', '2.3.1' 
+gem 'react-rails', '2.4.4' 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
