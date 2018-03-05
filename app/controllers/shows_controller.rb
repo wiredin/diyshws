@@ -4,7 +4,6 @@ class ShowsController < ApplicationController
   def new
     @city = City.find(params[:city_id])
     @show = Show.new(city_id: @city.id)
-    3.times { @show.bands.build }
   end
 
   def create
@@ -20,7 +19,7 @@ class ShowsController < ApplicationController
   private 
 
   def show_params
-    params.require(:show).permit(:start_date, :start_time, :venue, :facebook_event,:city_id, bands_attributes: [:id, :name, :country, :bandcamp])
+    params.require(:show).permit(:start_date, :start_time, :venue, :facebook_event, :city_id, bands_attributes: [:id, :name, :state, :country, :bandcamp])
   end
 
 end

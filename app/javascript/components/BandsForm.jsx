@@ -23,7 +23,7 @@ const Header = ({number}) => {
   if (number === 0) {
     title = <span className="badge badge-info">Headliner</span>;
   } else {
-    title = <span className="badge badge-secondary">Band {number+1}</span>;
+    title = <span className="badge badge-secondary">Band {number + 1}</span>;
   }
 
   return title;
@@ -35,7 +35,7 @@ const BandName = ({number, name}) => {
   }
 
   return <h6 className="mb-1">{name}</h6>;
-}
+};
 
 const HiddenInput = ({number, band}) => {
   var country;
@@ -60,13 +60,13 @@ const HiddenInput = ({number, band}) => {
         type="hidden"
         name={`show[bands_attributes][${number}][state]`}
         id={`show_bands_attributes_${number}_state`}
-        value={state}
+        value={band.state}
       />
       <input
         type="hidden"
         name={`show[bands_attributes][${number}][country]`}
         id={`show_bands_attributes_${number}_country`}
-        value={country}
+        value={band.country}
       />
       <input
         type="hidden"
@@ -118,7 +118,10 @@ const Band = SortableElement(({band, onRemove, value}) => {
         <BandName name={band.name} number={value} />
         <div className="band-item-action">
           <Header number={value} />
-          <button type="button" className="ml-2 close" onClick={() => onRemove(value)}>
+          <button
+            type="button"
+            className="ml-2 close"
+            onClick={() => onRemove(value)}>
             x
           </button>
         </div>
@@ -132,7 +135,7 @@ const Band = SortableElement(({band, onRemove, value}) => {
   );
 });
 
-const BandList = SortableContainer(({bands, onRemove}) => {
+const BandList = SortableContainer(({bands, onRemove, displayError}) => {
   let bandListNode = bands.map((band, i) => {
     return [
       <Band
@@ -145,8 +148,14 @@ const BandList = SortableContainer(({bands, onRemove}) => {
       <HiddenInput key={`input-${i}`} number={i} band={band} />,
     ];
   });
+
   if (bands.length == 0) {
-    bandListNode = <p>No bands yet</p>;
+    let errorClass = displayError ? 'input-error' : '';
+    bandListNode = (
+      <div>
+        <p className={errorClass}>No bands yet</p>
+      </div>
+    );
   }
   return <div className="list-group">{bandListNode}</div>;
 });
@@ -200,7 +209,7 @@ class BandsForm extends Component {
       bandcamp: '',
       soundcloud: '',
       showModal: false,
-      data: [],
+      data: this.props.data,
       errors: {name: false, state: false, bandcamp: false, soundcloud: false},
     };
     this.handleChange = this.handleChange.bind(this);
@@ -302,7 +311,6 @@ class BandsForm extends Component {
   handleLocation(loc) {
     this.setState({state: loc});
   }
-
   render() {
     return (
       <div className="Bands">
@@ -310,6 +318,7 @@ class BandsForm extends Component {
           bands={this.state.data}
           onSortEnd={this.onSortEnd}
           onRemove={this.handleRemove}
+          displayError={this.props.displayError}
           useDragHandle={true}
         />
         <button
