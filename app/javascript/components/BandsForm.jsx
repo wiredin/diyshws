@@ -60,13 +60,13 @@ const HiddenInput = ({number, band}) => {
         type="hidden"
         name={`show[bands_attributes][${number}][state]`}
         id={`show_bands_attributes_${number}_state`}
-        value={band.state}
+        value={state}
       />
       <input
         type="hidden"
         name={`show[bands_attributes][${number}][country]`}
         id={`show_bands_attributes_${number}_country`}
-        value={band.country}
+        value={country}
       />
       <input
         type="hidden"
