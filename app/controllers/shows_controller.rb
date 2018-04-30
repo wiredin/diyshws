@@ -4,6 +4,8 @@ class ShowsController < ApplicationController
   def new
     @city = City.find(params[:city_id])
     @show = Show.new(city_id: @city.id)
+    @performances = @show.performances.build 
+    @performances.build_band 
   end
 
   def create
@@ -13,6 +15,22 @@ class ShowsController < ApplicationController
       redirect_to @show.city 
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @city = City.find(params[:city_id])
+    @show = Show.find(params[:id])
+  end
+
+  def update
+    @city = City.find(params[:city_id])
+    @show = Show.find(params[:id])
+    if @show.update_attributes(show_params)
+      flash[:sucess] = "Show update"
+      redirect_to @show.city 
+    else
+      render 'edit'
     end
   end
   

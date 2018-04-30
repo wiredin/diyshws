@@ -1,0 +1,6 @@
+<%= show_form.fields_for :performances do |performance_form| %>
+    <%= performance_form.fields_for :band do |band_form| %>
+      <%= band_form.label :name, class: "sr-only" %>
+      <%= band_form.text_field :name, class: "form-control", placeholder: 'name' %>
+    <% end %>
+  <% end %>

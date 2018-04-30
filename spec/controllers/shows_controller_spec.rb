@@ -21,11 +21,6 @@ RSpec.describe ShowsController, type: :controller do
       expect(assigns(:show)).to be_a_new(Show)
     end
 
-    it "builds three band associations in @show" do
-      get :new, params: {city_id: @city.id}
-      expect(assigns(:show).bands.map(&:id)).to eq bands.map(&:id)
-    end
-
     it "renders the :new template" do
       get :new, params: {city_id: @city.id}
       expect(response).to render_template :new

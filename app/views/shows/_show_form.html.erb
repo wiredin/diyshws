@@ -1,0 +1,34 @@
+<%= form_for [@city, @show], html: {class: "form-horizontal"} do |f| %>
+  <%= render 'shared/error_messages' , model:  @show  %>
+  <%= f.hidden_field :city_id %>
+
+  <div id="show-fields">
+    <div class="form-group">
+      <%= f.label :start_date, class: "sr-only" %>
+      <%= f.text_field :start_date, class: "form-control", placeholder: 'When', id: "datepicker" %>
+      <small class="input-error"><%= @show.errors.full_messages_for(:start_date).first %></small>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_time, class: "sr-only" %>
+      <%= f.select :start_time, time_options, {selected: "19:00"},{class: "form-control start-time"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :venue, class: "sr-only" %>
+      <%= f.text_field :venue, class:"form-control", placeholder: 'Venue' %>
+      <small class="input-error"><%= @show.errors.full_messages_for(:venue).first %></small>
+    </div>
+    <div class="form-group">
+      <%= f.label :facebook_event, class: "sr-only" %>
+      <%= f.text_field :facebook_event, class:"form-control", placeholder: 'Facebook event' %>
+    </div>
+  </div>
+  <%= render 'bands_form', show_form: f %>
+  <hr class="mb-4">
+  <div id="show-fields">
+    <%= react_component("BandsForm", { displayError: !@show.errors[:bands].empty?, data: format_bands_form_params(@show.bands)}) %>
+  </div>
+  <hr class="mb-4">
+  <div class="form-group">
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
+  </div>
+<% end %>

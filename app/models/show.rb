@@ -4,6 +4,7 @@ class Show < ApplicationRecord
   has_many :performances
   has_many :bands, through: :performances
   accepts_nested_attributes_for :bands 
+  accepts_nested_attributes_for :performances 
 
   validate  :start_date_validation
   validates :start_datetime, presence: true

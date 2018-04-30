@@ -28,7 +28,7 @@ module ShowsHelper
   def format_bands_form_params(bands)
     bands.map do |b|
       state =  (b.country == "USA" || b.country == "") ? b.state : b.country
-      {name: b.name, state: state, bandcamp: b.bandcamp, soundcloud: nil}
+      {name: b.name, id: b.id, state: state, bandcamp: b.bandcamp, soundcloud: nil}
     end
   end
 
