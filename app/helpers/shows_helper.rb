@@ -25,10 +25,11 @@ module ShowsHelper
     end 
   end
 
-  def format_bands_form_params(bands)
-    bands.map do |b|
+  def format_bands_form_params(performances)
+    performances.map do |p|
+      b = p.band
       state =  (b.country == "USA" || b.country == "") ? b.state : b.country
-      {name: b.name, id: b.id, state: state, bandcamp: b.bandcamp, soundcloud: nil}
+      {name: b.name, perf_id: p.id, id: b.id, state: state, bandcamp: b.bandcamp, soundcloud: nil}
     end
   end
 

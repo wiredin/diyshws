@@ -52,40 +52,48 @@ const HiddenInput = ({number, band}) => {
     <div>
       <input
         type="hidden"
-        name={`show[bands_attributes][${number}][name]`}
-        id={`show_bands_attributes_${number}_name`}
+        name={`show[performances_attributes][${number}][band_attributes][name]`}
+        id={`show_performances_attributes_${number}_band_attributes_name`}
         value={band.name}
       />
       <input
         type="hidden"
-        name={`show[bands_attributes][${number}][id]`}
-        id={`show_bands_attributes_${number}_id`}
-        value={band.id}
-      />
-      <input
-        type="hidden"
-        name={`show[bands_attributes][${number}][state]`}
-        id={`show_bands_attributes_${number}_state`}
+        name={`show[performances_attributes][${number}][band_attributes][state]`}
+        id={`show_performances_attributes_${number}_band_attributes_state`}
         value={state}
       />
       <input
         type="hidden"
-        name={`show[bands_attributes][${number}][country]`}
-        id={`show_bands_attributes_${number}_country`}
+        name={`show[performances_attributes][${number}][band_attributes][country]`}
+        id={`show_performances_attributes_${number}_band_attributes_country`}
         value={country}
       />
       <input
         type="hidden"
-        name={`show[bands_attributes][${number}][bandcamp]`}
-        id={`show_bands_attributes_${number}_bandcamp`}
+        name={`show[performances_attributes][${number}][band_attributes][bandcamp]`}
+        id={`show_performances_attributes_${number}_band_attributes_bandcamp`}
         value={band.bandcamp}
       />
       <input
         type="hidden"
-        name={`show[bands_attributes][${number}][soundcloud]`}
-        id={`show_bands_attributes_${number}_soundcloud`}
+        name={`show[performances_attributes][${number}][band_attributes][soundcloud]`}
+        id={`show_performances_attributes_${number}_band_attributes_soundcloud`}
         value={band.soundcloud}
       />
+      <input
+        type="hidden"
+        name={`show[performances_attributes][${number}][band_attributes][id]`}
+        id={`show_performances_attributes_${number}_band_attributes_id`}
+        value={band.id}
+      />
+
+      <input
+        type="hidden"
+        name={`show[performances_attributes][${number}][id]`}
+        id={`show_performances_attributes_${number}_id`}
+        value={band.perf_id}
+      />
+
     </div>
   );
 };

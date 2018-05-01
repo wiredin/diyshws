@@ -4,7 +4,7 @@ class ShowsController < ApplicationController
   def new
     @city = City.find(params[:city_id])
     @show = Show.new(city_id: @city.id)
-    @performances = @show.performances.build 
+    @performances = @show.performances.build
     @performances.build_band 
   end
 
