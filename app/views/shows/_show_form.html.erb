@@ -22,7 +22,6 @@
       <%= f.text_field :facebook_event, class:"form-control", placeholder: 'Facebook event' %>
     </div>
   </div>
-  <%= render 'bands_form', show_form: f %>
   <hr class="mb-4">
   <div id="show-fields">
     <%= react_component("BandsForm", { displayError: !@show.errors[:bands].empty?, data: format_bands_form_params(@show.performances)}) %>

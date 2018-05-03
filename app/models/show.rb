@@ -1,8 +1,8 @@
 class Show < ApplicationRecord
   belongs_to :city
 
-  has_many :performances
-  has_many :bands, through: :performances
+  has_many :performances, -> { order(:position) }
+  has_many :bands, through: :performances 
   accepts_nested_attributes_for :bands 
   accepts_nested_attributes_for :performances 
 

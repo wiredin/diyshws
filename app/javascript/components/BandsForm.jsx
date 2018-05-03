@@ -93,6 +93,12 @@ const HiddenInput = ({number, band}) => {
         id={`show_performances_attributes_${number}_id`}
         value={band.perf_id}
       />
+      <input
+        type="hidden"
+        name={`show[performances_attributes][${number}][position]`}
+        id={`show_performances_attributes_${number}_position`}
+        value={number}
+      />
 
     </div>
   );
