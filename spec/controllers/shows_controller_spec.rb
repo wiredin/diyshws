@@ -5,6 +5,8 @@ RSpec.describe ShowsController, type: :controller do
 
   before do
     @city = create(:city)
+    @performances=[]
+    3.times {@performances << build(:performance).attributes}
     @bands = [attributes_for(:band),attributes_for(:band),attributes_for(:band)]
   end
   
@@ -33,12 +35,12 @@ RSpec.describe ShowsController, type: :controller do
 
       it "saves the new show in the database" do
         expect{
-          post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, bands_attributes: @bands ) }
+          post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, performances_attributes: @performances ) }
         }.to change(Show, :count).by(1)
       end
 
       it "redirects to city#show" do
-        post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, bands_attributes: @bands) }
+        post :create, params: {city_id: @city.id, show: attributes_for(:show, city_id: @city.id, performances_attributes: @performances ) }
         expect(response).to redirect_to city_path(assigns[:show].city)
       end
 

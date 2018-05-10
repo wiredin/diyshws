@@ -3,13 +3,12 @@ class Show < ApplicationRecord
 
   has_many :performances, -> { order(:position) }
   has_many :bands, through: :performances 
-  accepts_nested_attributes_for :bands 
   accepts_nested_attributes_for :performances 
 
   validate  :start_date_validation
   validates :start_datetime, presence: true
   validates :venue, presence: true
-  validates :bands, presence: true
+  validates :performances, presence: true
 
   def start_date 
     date = start_datetime.strftime('%m/%d/%Y') if start_datetime

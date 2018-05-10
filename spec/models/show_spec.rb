@@ -17,10 +17,10 @@ RSpec.describe Show, type: :model do
     expect(show.errors[:start_datetime]).to include("can't be blank")
   end
   
-  it "is invalid without bands" do 
-    show = build(:show, bands: [])
+  it "is invalid without performances" do 
+    show = build(:show, performances: [])
     show.valid?
-    expect(show.errors[:bands]).to include("can't be blank")
+    expect(show.errors[:performances]).to include("can't be blank")
   end
 
   it "is invalid without a start_date" do
@@ -36,7 +36,7 @@ RSpec.describe Show, type: :model do
   end
 
   it "is valid with a start_time and venue" do
-    expect(build(:show_with_bands)).to be_valid
+    expect(build(:show_with_performances)).to be_valid
   end
 
   it "returns 'mm/dd/yyyy' for start_date" do

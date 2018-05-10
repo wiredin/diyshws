@@ -35,7 +35,7 @@ class ShowsController < ApplicationController
   private 
 
   def show_params
-    params.require(:show).permit(:start_date, :start_time, :venue, :facebook_event, :city_id, performances_attributes: [:id, :position, band_attributes: [:id, :name, :state, :country, :bandcamp]])
+    params.require(:show).permit(:start_date, :start_time, :venue, :facebook_event, :city_id, performances_attributes: [:id, :position, :band_id, band_attributes: [:id, :name, :state, :country, :bandcamp]])
   end
 
 end

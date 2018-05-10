@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :performance do
-    band nil
-    show nil
+  factory :performance do 
+    sequence(:position) {|n| n}
+    band 
   end
 end

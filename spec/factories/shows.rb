@@ -18,5 +18,18 @@ FactoryBot.define do
         end
       end
     end 
+
+    factory :show_with_performances do
+      
+      transient do
+        performances_count 1
+      end
+
+      after(:build) do |show,evaluator|
+        evaluator.performances_count.times do
+          show.performances << create(:performance)
+        end
+      end
+    end
   end
 end
