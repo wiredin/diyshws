@@ -25,6 +25,7 @@ class ShowsController < ApplicationController
     @city = City.find(params[:city_id])
     @show = Show.find(params[:id])
     if @show.update_attributes(show_params)
+      remove_missing_performances
       flash[:sucess] = "Show update"
       redirect_to @show.city 
     else
@@ -38,4 +39,13 @@ class ShowsController < ApplicationController
     params.require(:show).permit(:start_date, :start_time, :venue, :facebook_event, :city_id, performances_attributes: [:id, :position, :band_id, band_attributes: [:id, :name, :state, :country, :bandcamp]])
   end
 
+  def remove_missing_performances
+    curr_performances = @show.performances.map { |p| p.attributes}
+    param_performances  = show_params[:performances_attributes].map{|param| param["id"].to_i}
+    missing = curr_performances.reject do |curr| 
+       param_performances.include?(curr["id"]) 
+    end
+    missing.each {|miss| @show.performances.destroy(miss["id"]) }
+  
+  end
 end

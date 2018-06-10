@@ -3,7 +3,7 @@ class Show < ApplicationRecord
 
   has_many :performances, -> { order(:position) }
   has_many :bands, through: :performances 
-  accepts_nested_attributes_for :performances 
+  accepts_nested_attributes_for :performances, allow_destroy: true 
 
   validate  :start_date_validation
   validates :start_datetime, presence: true
